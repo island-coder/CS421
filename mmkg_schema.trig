@@ -1,0 +1,203 @@
+@prefix : <http://demo-mmkg.org/#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+{
+    :article a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :concept a rdfs:Class .
+
+    :depiction a rdfs:Class .
+
+    :event a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :facility a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :geographic_location a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :geopolitical_entity a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :image a rdfs:Class .
+
+    :nationality a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :organization a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :person a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :product a rdfs:Class ;
+        rdfs:subClassOf :concept .
+
+    :allies a rdf:Property ;
+        rdfs:domain :geopolitical_entity ;
+        rdfs:range :geopolitical_entity .
+
+    :associated_with a rdf:Property ;
+        rdfs:domain :geopolitical_entity,
+            :organization,
+            :person ;
+        rdfs:range :facility,
+            :nationality,
+            :product .
+
+    :colleague a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :person .
+
+    :conflict a rdf:Property ;
+        rdfs:domain :geopolitical_entity,
+            :person ;
+        rdfs:range :geopolitical_entity,
+            :person .
+
+    :couple a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :person .
+
+    :employer a rdf:Property ;
+        rdfs:domain :organization,
+            :person ;
+        rdfs:range :person .
+
+    :family a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :person .
+
+    :has_author a rdf:Property ;
+        rdfs:domain :article ;
+        rdfs:range :person .
+
+    :has_bounding_box a rdf:Property ;
+        rdfs:domain :depiction ;
+        rdfs:range xsd:string .
+
+    :has_coordinates a rdf:Property ;
+        rdfs:domain :geographic_location ;
+        rdfs:range xsd:string .
+
+    :has_date a rdf:Property ;
+        rdfs:domain :event ;
+        rdfs:range xsd:dateTime .
+
+    :has_depiction a rdf:Property ;
+        rdfs:domain :concept ;
+        rdfs:range :depiction .
+
+    :has_facility a rdf:Property ;
+        rdfs:domain :geopolitical_entity,
+            :organization ;
+        rdfs:range :facility .
+
+    :has_filename a rdf:Property ;
+        rdfs:domain :image ;
+        rdfs:range xsd:string .
+
+    :has_id a rdf:Property ;
+        rdfs:domain :concept ;
+        rdfs:range xsd:string .
+
+    :has_image a rdf:Property ;
+        rdfs:domain :depiction ;
+        rdfs:range :image .
+
+    :has_location a rdf:Property ;
+        rdfs:domain :event,
+            :organization ;
+        rdfs:range :geographic_location .
+
+    :has_name_or_title a rdf:Property ;
+        rdfs:domain :concept ;
+        rdfs:range xsd:string .
+
+    :has_nationality_or_citizenship a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :nationality .
+
+    :has_publicationdate a rdf:Property ;
+        rdfs:domain :article ;
+        rdfs:range xsd:dateTime .
+
+    :has_role a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range xsd:string .
+
+    :has_source a rdf:Property ;
+        rdfs:domain :article ;
+        rdfs:range xsd:string .
+
+    :has_type a rdf:Property ;
+        rdfs:domain :organization ;
+        rdfs:range xsd:string .
+
+    :has_url a rdf:Property ;
+        rdfs:domain :image ;
+        rdfs:range xsd:anyURI .
+
+    :held_at a rdf:Property ;
+        rdfs:domain :event ;
+        rdfs:range :facility,
+            :geographic_location,
+            :geopolitical_entity .
+
+    :lives_in a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :geopolitical_entity .
+
+    :located_at a rdf:Property ;
+        rdfs:domain :geopolitical_entity,
+            :organization ;
+        rdfs:range :geographic_location,
+            :geopolitical_entity .
+
+    :located_near a rdf:Property ;
+        rdfs:domain :geopolitical_entity ;
+        rdfs:range :geopolitical_entity .
+
+    :manufactured_at a rdf:Property ;
+        rdfs:domain :geopolitical_entity,
+            :product ;
+        rdfs:range :facility,
+            :product .
+
+    :manufacturer a rdf:Property ;
+        rdfs:domain :organization ;
+        rdfs:range :product .
+
+    :organized_by a rdf:Property ;
+        rdfs:domain :event ;
+        rdfs:range :organization .
+
+    :owner a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :product .
+
+    :ownership a rdf:Property ;
+        rdfs:domain :organization ;
+        rdfs:range :product .
+
+    :participant a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :event .
+
+    :peer a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :person .
+
+    :user a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :product .
+
+    :works_at a rdf:Property ;
+        rdfs:domain :person ;
+        rdfs:range :organization .
+}
+

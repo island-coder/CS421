@@ -1,0 +1,42 @@
+Neosemantics loading rdf graph 
+"""
+MATCH (n)
+DETACH DELETE n
+
+CALL n10s.graphconfig.init();
+
+CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource)
+REQUIRE r.uri IS UNIQUE;
+
+// n10s created nodes must be deleted before updating Graph Config
+MATCH (resource:Resource) DETACH DELETE resource;
+
+CALL n10s.graphconfig.init();
+
+CALL n10s.graphconfig.init({handleRDFTypes:"LABELS_AND_NODES"});
+CALL n10s.graphconfig.set({ handleVocabUris: "IGNORE" });
+
+CALL n10s.rdf.import.fetch("file:///C:\Users\ADMIN\Downloads\mmkg_schema.ttl", "Turtle");
+CALL n10s.rdf.import.fetch("file:///C:\Users\ADMIN\Downloads\mmkg_schema.ttl", "Turtle" , {
+  typesToLabels: false
+});
+"""
+
+
+articles
+
+#link='https://www.bbc.com/news/articles/cy9j8r8gg0do'
+#link='https://www.bbc.com/news/articles/c04ld19vlg6o'
+#link='https://www.bbc.com/news/articles/cx24gze60yzo'
+#link='https://www.bbc.com/news/articles/c0mzl7zygpmo'
+#link='https://www.bbc.com/news/articles/c2dl0e4l7lzo'
+#link='https://www.bbc.com/news/business-61234231'
+#link='https://www.bbc.com/news/articles/c36pxnj01xgo'
+#link='https://www.bbc.com/news/articles/c3e8z53qyd5o'
+#link='https://www.bbc.com/news/articles/cx2lknel1xpo'
+#link='https://www.bbc.com/news/articles/c2k0zd2z53xo'
+#='https://www.bbc.com/news/articles/crmzvdn9e18o'
+#link='https://www.bbc.com/news/articles/c04lvv6ee3lo'
+#link='https://www.bbc.com/news/articles/cj0jen70m88o'
+#link='https://www.bbc.com/news/articles/ced961egp65o'
+#link='https://www.bbc.com/news/articles/c0endd8qj01o'
