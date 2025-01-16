@@ -9,14 +9,14 @@ from google.colab import userdata
 from sklearn.decomposition import PCA
 from helper import append_rows_to_csv,check_file_exists,initialize_csv_with_headers,read_rows_from_csv
 
-search_engine_id= '502c6eae9f8444e81'
+search_engine_id= 'SEARCH_ENGINE_ID'
 google_search_key=userdata.get('GOOGLE_CUSTOM_SEARCH')
 headers = {
         'User-Agent': 'MMKG_DataCrawler/0.1 (uA5N7w2KEk@protonmail.com)'
     }
 
 def init_pinecone_index():
-    pc = Pinecone(api_key='67db46e1-1b5e-4138-b34c-77e6f5f73cf5')
+    pc = Pinecone(api_key=PINECONE_API_KEY)
     index_name = 'mmkg-index'
     if index_name not in pc.list_indexes().names():
         pc.create_index(
